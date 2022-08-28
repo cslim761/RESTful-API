@@ -1,0 +1,131 @@
+openapi: "3.0.3"
+info: 
+  title: Customer
+  description: Customer endpoints
+  version: "1.0"
+
+servers:
+  - url: http://localhost:3000
+    description: Development server  
+  - url: http://localhost:8080
+    description: Reverse proxy
+
+paths: 
+  /customer/{custId}:
+    get:
+      operationId: getCustomerByCustomerId
+      parameters:
+        - name: custId
+          in: path
+          schema: 
+            type: number
+          required: true
+      responses:
+        200:
+          description: Return customer record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+            test/csv:
+              schema:  
+                type: string
+
+        404: 
+          description: cannot find customer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+  /customers:
+    get:
+      operationId: findCusts
+      parameters:
+        - name: limit
+          in: query
+          description: Number of customers
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: offset
+          in: query
+          description: Number of customers to offset
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Return customer record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+         
+  /customer:
+    post: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        201:
+          description: New Customer Added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerAdded"
+            
+
+        404: 
+          description: cannot find customer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: number
+          format: int32
+          minimum: 100
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+      required:
+        - name
+        - email
+
+    CustomerAdded:
+      type: object
+      properties:
+        customerId:
+          type: number
+          format: int32
+          minimum: 100
+        message:
+          type: string
+        time:
+          type: string 
+          
+
+    Error:
+      type:  object
+      properties:
+        message: 
+          type: string
+      required:
+        - message
+
