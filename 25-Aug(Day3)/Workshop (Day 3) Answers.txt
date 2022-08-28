@@ -1,0 +1,614 @@
+Q1
+
+query { 
+  viewer { 
+    login
+    name
+    url
+    email
+  }
+}
+
+{
+  "data": {
+    "viewer": {
+      "login": "cslim761",
+      "name": null,
+      "url": "https://github.com/cslim761",
+      "email": ""
+    }
+  }
+}
+
+--------------------------------------------------------------
+Q2
+# Type queries into this side of the screen, and you will 
+# see intelligent typeaheads aware of the current GraphQL type schema, 
+# live syntax, and validation errors highlighted within the text.
+
+# We'll get you started with a simple query showing your username!
+query { 
+  viewer { 
+    login
+    repositories(first: 50, orderBy: { direction: DESC, field: CREATED_AT } ) {
+      nodes {
+        name
+        url
+        description
+      }
+      
+    }
+  }
+}
+
+{
+  "data": {
+    "viewer": {
+      "login": "cslim761",
+      "repositories": {
+        "nodes": [
+          {
+            "name": "RESTful-API",
+            "url": "https://github.com/cslim761/RESTful-API",
+            "description": null
+          },
+          {
+            "name": "SpringPetClinic",
+            "url": "https://github.com/cslim761/SpringPetClinic",
+            "description": null
+          },
+          {
+            "name": "NUSISS-DevOpsEng",
+            "url": "https://github.com/cslim761/NUSISS-DevOpsEng",
+            "description": "NUS ISS  DevOps Engineering - Git, Docker, Docker Compose,  Puppet , AWS Code Pipeline/CodeStar, Docker , Kubernetes, Terraform, Ansible"
+          },
+          {
+            "name": "StackAnnotationMaven",
+            "url": "https://github.com/cslim761/StackAnnotationMaven",
+            "description": "This is StackAnnotationMaven"
+          },
+          {
+            "name": "StackAnnotation",
+            "url": "https://github.com/cslim761/StackAnnotation",
+            "description": "StackAnnotation for Ant build"
+          },
+          {
+            "name": "ProjectA",
+            "url": "https://github.com/cslim761/ProjectA",
+            "description": "This is a sample project repo"
+          },
+          {
+            "name": "vftvk-Simple-Interest-Calculator",
+            "url": "https://github.com/cslim761/vftvk-Simple-Interest-Calculator",
+            "description": null
+          },
+          {
+            "name": "testrepo",
+            "url": "https://github.com/cslim761/testrepo",
+            "description": null
+          }
+        ]
+      }
+    }
+  }
+}
+
+--------------------------------------------------------------------
+Q3
+# Type queries into this side of the screen, and you will 
+# see intelligent typeaheads aware of the current GraphQL type schema, 
+# live syntax, and validation errors highlighted within the text.
+
+# We'll get you started with a simple query showing your username!
+query  { 
+ user(login: "fred") {
+  bio
+  name
+  email
+ }
+}
+
+{
+  "data": {
+    "user": {
+      "bio": "IT Operations, Infrastructure and Security",
+      "name": "Frederico Araujo",
+      "email": "fred@omise.co"
+    }
+  }
+}
+
+-------------------------------------------------------------------
+Q4
+query SearchRepository($abc: String!) {
+  search( first: 20, query: $abc, type: REPOSITORY) {
+    nodes {
+      ... on Repository {
+        name
+        url
+        description
+      }
+    }
+  }
+}
+
+{"abc": "angular"}
+
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "name": "angular",
+          "url": "https://github.com/angular/angular",
+          "description": "The modern web developer’s platform"
+        },
+        {
+          "name": "angular.js",
+          "url": "https://github.com/angular/angular.js",
+          "description": "AngularJS - HTML enhanced for web apps!"
+        },
+        {
+          "name": "angular-cli",
+          "url": "https://github.com/angular/angular-cli",
+          "description": "CLI tool for Angular"
+        },
+        {
+          "name": "angular-starter",
+          "url": "https://github.com/PatrickJS/angular-starter",
+          "description": "Angular Starter"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/angulardart/angular",
+          "description": "Fast and productive web framework provided by Dart"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/formio/angular",
+          "description": "JSON powered forms for Angular"
+        },
+        {
+          "name": "AngularJS-Learning",
+          "url": "https://github.com/jmcunningham/AngularJS-Learning",
+          "description": "A bunch of links to blog posts, articles, videos, etc for learning AngularJS"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/OOP-Code-Bunny/angular",
+          "description": "所有angular学习过程中的代码"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/scalyr/angular",
+          "description": "Code to optimize AngularJS for complex pages"
+        },
+        {
+          "name": "Angular-GettingStarted",
+          "url": "https://github.com/DeborahK/Angular-GettingStarted",
+          "description": "Sample Angular application used in the \"Angular: Getting Started\" course: http://bit.ly/Angular-GettingStarted"
+        },
+        {
+          "name": "angular-ngrx-material-starter",
+          "url": "https://github.com/tomastrajan/angular-ngrx-material-starter",
+          "description": "Angular, NgRx, Angular CLI & Angular Material Starter Project"
+        },
+        {
+          "name": "angular-seed",
+          "url": "https://github.com/angular/angular-seed",
+          "description": "Seed project for angular apps. "
+        },
+        {
+          "name": "angular-styleguide",
+          "url": "https://github.com/johnpapa/angular-styleguide",
+          "description": "Angular Style Guide: A starting point for Angular development teams to provide consistency through good practices."
+        },
+        {
+          "name": "angularfire",
+          "url": "https://github.com/angular/angularfire",
+          "description": "The official Angular library for Firebase."
+        },
+        {
+          "name": "platform",
+          "url": "https://github.com/ngrx/platform",
+          "description": "Reactive libraries for Angular"
+        },
+        {
+          "name": "angularUtils",
+          "url": "https://github.com/michaelbromley/angularUtils",
+          "description": "A place where I will collect useful re-usable Angular components that I make"
+        },
+        {
+          "name": "angular-phonecat",
+          "url": "https://github.com/angular/angular-phonecat",
+          "description": "Tutorial on building an angular application."
+        },
+        {
+          "name": "ng-bootstrap",
+          "url": "https://github.com/ng-bootstrap/ng-bootstrap",
+          "description": "Angular powered Bootstrap"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/ui-router/angular",
+          "description": "UI-Router for Angular: State-based routing for Angular (v2+)"
+        },
+        {
+          "name": "AngularJSAuthentication",
+          "url": "https://github.com/tjoudeh/AngularJSAuthentication",
+          "description": "Tutorial shows Authentication in AngularJS with ASP.NET Web API 2 and Owin Middle-ware using access tokens and refresh tokens approach"
+        }
+      ]
+    }
+  }
+}
+-------------------------------------------------------------------\
+
+----------------------------------------------------------------------
+Q6
+# Type queries into this side of the screen, and you will 
+# see intelligent typeaheads aware of the current GraphQL type schema, 
+# live syntax, and validation errors highlighted within the text.
+
+# We'll get you started with a simple query showing your username!
+mutation{
+  createRepository(input: { name: "my-4-pm-repo", visibility: PUBLIC}) {
+    repository {
+      id
+    }
+  }
+}
+
+{
+  "data": {
+    "createRepository": {
+      "repository": {
+        "id": "R_kgDOH4QkdQ"
+      }
+    }
+  }
+}
+
+---------------------------------
+
+# Type queries into this side of the screen, and you will 
+# see intelligent typeaheads aware of the current GraphQL type schema, 
+# live syntax, and validation errors highlighted within the text.
+
+# We'll get you started with a simple query showing your username!
+mutation {
+  createBranchProtectionRule (input: {repositoryId: "R_kgDOH4QkdQ", 
+    pattern: "main", 
+    requiresApprovingReviews: true, 
+    requiredApprovingReviewCount: 2, allowsDeletions: false}) {
+    clientMutationId
+  }
+}
+
+{
+  "data": {
+    "createBranchProtectionRule": {
+      "clientMutationId": null
+    }
+  }
+}
+
+---------------------------------------------------------------------------
+Q5
+
+query SearchRepository($query: String!, $type: SearchType! ) {
+  search( first: 20, query: $query, type: $type) {
+    nodes {
+      ... on Repository {
+        name
+        url
+        description
+      }
+      ... on Discussion {
+        author {
+          login
+        }
+        body
+        answer {
+          id
+        }
+      }
+    }
+  }
+}
+
+{
+  "query": "angular",
+  "type": "DISCUSSION"
+}
+
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "author": {
+            "login": "StoyanStAtanasov"
+          },
+          "body": "Who want's an Angular client",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "matzar"
+          },
+          "body": "It's a mouthful but I think I've managed to create an Angular/Ionic app within my Nx 14 workspace (14.5.8 TBP) using `@nxext/ionic-angular` package.\r\n\r\nI've even managed to get my android project generated and shipped to an android device with `@nxext/capacitor` but, my Capacitor plugins don't work anymore (one of our own and the other one from capacitor-community - [`@capacitor-community/text-to-speech`](https://github.com/capacitor-community/text-to-speech)).\r\n\r\nThe thing is, it's all working when I build in my original project, outside of Nx workspace (so the usual way).\r\n\r\nIs there some setting I'm forgetting here? Maybe I should explicitly specify my plugins somewhere in my `ionic.config.json` or something like that? Has anyone experienced something similar?\r\n\r\nPS I'm using nxext because that's the only extension compatible with Nx 14 (And I'm also using Angular 14). I wonder if the same problem would have happened if I were using `@nxtend/ionic-angular` and Nx 13?",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "geromegrignon"
+          },
+          "body": "<!--\r\n    ✏️ Optional: Customize the content below to let your community know what you intend to use Discussions for.\r\n-->\r\n## 👋 Welcome!\r\n  We’re using Discussions as a place to connect with other members of our community. We hope that you:\r\n  * Ask questions you’re wondering about.\r\n  * Share ideas.\r\n  * Engage with other community members.\r\n  * Welcome others and are open-minded. Remember that this is a community we\r\n  build together 💪.\r\n\r\n  To get started, comment below with an introduction of yourself and tell us about what you do with this community.\r\n\r\n<!--\r\n  For the maintainers, here are some tips 💡 for getting started with Discussions. We'll leave these in Markdown comments for now, but feel free to take out the comments for all maintainers to see.\r\n\r\n  📢 **Announce to your community** that Discussions is available! Go ahead and send that tweet, post, or link it from the website to drive traffic here.\r\n\r\n  🔗 If you use issue templates, **link any relevant issue templates** such as questions and community conversations to Discussions. Declutter your issues by driving community content to where they belong in Discussions. If you need help, here's a [link to the documentation](https://docs.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser).\r\n\r\n  ➡️ You can **convert issues to discussions** either individually or bulk by labels. Looking at you, issues labeled “question” or “discussion”.\r\n-->\r\n",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "vavasilev"
+          },
+          "body": "Hello Colleagues,\r\n\r\nI am part of iLM Sink team and we have SAP UI 5 UI. We are considering currently transition to framework, preferably Angular. In this relation I have some questions:\r\n1. What is the difference between the web components project: https://sap.github.io/ui5-webcomponents/ and the fundamental library: https://sap.github.io/fundamental-ngx/#/core/home? \r\n2. In our application we have lot of graphical dashboards that use lot of stuff from “sap.viz” namespace. As far as what I was able to find in google, I didn’t find anything we can use with Angular - only basic components. For react we found some libraries here: https://sap.github.io/ui5-webcomponents-react/?path=/docs/charts-linechart--default-story. So, what is your recommendation to use for graphics in an Angular project? \r\n\r\nThanks, Vasil",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "ng-druid"
+          },
+          "body": "I have been trying to have tailwind parse the html generated by the pre-render process of [Angular](https://angular.io/guide/prerendering) with no success. I think this is because the tailwind processing needs to be added to the pre-render builder. With other builds [build, server, etc.] this can easily be accomplished with [custom angular builds](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack). However, no custom builder to augment the web pack script for pre-render exists. Therefore, I think the only path forward to integrate tailwind processing of generated pre-rendered html files into the native build (angular.json) of Angular will be to create a custom builder. Anyone familiar does any of this sound like the right path.\r\n\r\nThe other option is just to run tailwind after the build and generate a separate css file. However, I would really prefer to have this part of the build process defined by angular.json.\r\n\r\n------------\r\n\r\nThe tailwind processing needs to run after all the routes are pre-rendered to the distribution using this builder.\r\n\r\nhttps://github.com/angular/universal/blob/main/modules/builders/src/prerender/index.ts\r\n\r\n------------\r\n\r\nI think this can easily be done by following in the footsteps of custom webpack builders.\r\n\r\nhttps://github.com/just-jeb/angular-builders/blob/master/packages/custom-webpack/src/server/index.ts\r\n\r\n------------\r\n\r\nThis is along the lines of what I'm thinking. Creating a builder that can wrap around an existing build with an additional webpack target. Maybe something like that already exists out in the wilderness somewhere.\r\n\r\n```json\r\n{\r\n    \"ipe\": {\r\n        \"dprerender\": {\r\n          \"builder\": \"@rollthecloudinc/builders:dpack\",\r\n          \"options\": {\r\n            \"target\": \"ipe:prerender\",\r\n            \"customWebpackConfig\": {\r\n              \"path\": \"./projects/ipe/dpack.config.js\"\r\n            }\r\n          },\r\n          \"configurations\": {\r\n            \"dev\": {\r\n              \"target\": \"ipe:prerender:dev\",\r\n            },\r\n            \"prod\": {\r\n              \"target\": \"ipe:prerender:prod\",\r\n            }\r\n          }\r\n    }\r\n}\r\n```",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "heyashwani"
+          },
+          "body": "{\r\n    \"error\": \"idpiframe_initialization_failed\",\r\n    \"details\": \"You have created a new client application that uses libraries for user authentication or authorization that will soon be deprecated. New clients must use the new libraries instead; existing clients must also migrate before these libraries are deprecated. See the [Migration Guide](https://developers.google.com/identity/gsi/web/guides/gis-migration) for more information.\"\r\n}\r\n\r\n![image](https://user-images.githubusercontent.com/46573499/186212120-33fe4b15-8c64-44e3-ba32-1c8dd8afd427.png)\r\n\r\n\r\nangular - 14\r\npackage used - angularx-social-login\r\n",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "bunsenbeaker"
+          },
+          "body": "Hi All!\r\nI have a n Angular 12 generic component I'd like to test with Spectator.\r\n```\r\n@Component({\r\n   ...\r\n})\r\nexport class MyComponent<T, U> {\r\n    @Output() public OnWhatever: EventEmitter<T> = new EventEmitter();\r\n....\r\n\r\n```\r\nIn my spec, I'm using:\r\n```\r\n\r\nlet spectator: Spectator<MyComponent<any, any>>;\r\n    const createComponent = createComponentFactory({\r\n        component: MyComponent,\r\n        schemas: [NO_ERRORS_SCHEMA]\r\n    });\r\n\r\n    beforeEach(() => spectator = createComponent());\r\n```\r\n\r\nUnless I use <any,any> as types, I'm getting the following error (when I use specific types) :\r\n\r\nType 'Spectator<MyComponent<unknown, unknown>>' is not assignable to type 'Spectator<MyComponent<MyTypeA, MyTypeB>>'\r\n\r\nor a parsing error if I use:\r\n`component: MyComponent,<MyTypeA, MyTypeB>\r\n`\r\nAny suggestions?\r\nTnx!",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "conradkirschner"
+          },
+          "body": "https://github.com/cypress-io/cypress/blob/develop/npm/cypress-schematic/package.json#L30\r\n\r\nHey, \r\nI am wondering why it needs Angular 14. I've tested the builder with Angular 12 and seems to work, I guess there are other root sources of this. \r\n\r\nThanks a lot :) ",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "OlivierVS31"
+          },
+          "body": "Bonjour,\r\n\r\nPetite question si vous avez déjà eu le cas et du coup quelles sont vos best practices : nous avons un site sous angular. Nous déployons Matomo via TaC que nous avons en version payante. Nous avions déjà ce process pour Google Analytics Universal.\r\n\r\nLe déploiement se fait sans problème :) mais nous rencontrons un problème que nous n'avions pas avec Universal, à savoir que les titres des pages ne sont pas remontées. C'est valable pour GA4 comme pour Matomo.\r\n\r\nQuelqu'un a t il déjà ce cas et du coup via l'intégration via TaC, comment l'avez vous contourné ?\r\n\r\nMerci d'avance",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "bkyerv"
+          },
+          "body": "I went through the quickstart and really liked the experience. Thank you whoever put that educational material together and made it publicly available for free. Few questions I was curious to discuss:\r\n\r\n1. why certain method(e.g.`user, profile, session`) are implemented using `get` getter, while others (e.g. `signIn, signOut, authChanges, updateProfile` etc) are implemented as regular methods\r\n2. why is `private supabase: SupabaseClient` is declared before the constructor and not passed as an argument to constructor?\r\n3. after certain period of time fetching for user (`this.supabase.auth.user()`) results in error saying that the token is expired. What is the default time period for token expiration? where can it be set to custom values?\r\n4. in certain cases dependency injection is supplemented with `readonly` like so `  constructor(private readonly supabase: SupabaseService) {}`. What is reason for this kind of defensive style? What could go wrong? Reason I am asking is that when I use React with Supabase I don't remember using some similar guarding mechanisms so I thought I might be missing something here\r\n5. `<app-account *ngIf=\"session; else auth\" [session]=\"session\"></app-account>` could you please help to better understand this piece of code? is session and auth return boolean values? Also why need to evaluate session property for this component?",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "meta-shubham-joshi"
+          },
+          "body": "Angular slickgrid build(cmd: ng build project_name) failing with angular version 13.3.0, angular-slickgrid version 4.1.4, rxjs version 7.5.5. Attaching below the screenshot for your reference. \r\n\r\n![Screenshot (225)](https://user-images.githubusercontent.com/41181790/184885307-11cf8864-b568-4492-9aff-e2a927d8c425.png)\r\n ",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "jerone"
+          },
+          "body": "I'm starting this discussion to create an **overview of custom Angular ESLint rules** that are not part of this repository. \r\n\r\nIt is not only about shameless promotion, but also to share examples and discuss implementation issues.\r\nIt might be interested to see what others have created.\r\n\r\n_@maintainers If not allowed, please let me know and I'll delete this discussion._\r\n\r\n\r\n",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "Xiirf"
+          },
+          "body": "Hello,\r\n\r\nI'm using Storybook on my Angular project and I would like to know if it is possible to detect events outside the Angular zone.\r\n\r\nI added my component on Storybook. It uses a directive that detects scroll outside the Angular zone. I'm doing this to not enable detection on my components.\r\n\r\nI tried with an event in the Angular zone and it works perfectly.\r\n\r\nThanks in advance ",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "bgotink"
+          },
+          "body": "The company I work at uses angular extensively. Angular projects are configured in a JSON file, which can become quite unwieldy for monorepositories. One of our repos contains > 100 projects, and while we have tried to limit the configuration per project by replacing many of the tools Angular provides with our own variants that require less config, we still end up with 4,000 lines of JSON configuration.\r\n\r\nWe've been experimenting for a while with how to make this file more maintainable, and KDL is allowing us to finally make some progress. An alternative implementation of the `@angular/cli` package can consume KDL configuration directly, but it also supports syncing configuration from KDL to JSON and back so we can continue using Angular unmodified.\r\n\r\nExample KDL file:\r\n\r\n```kdl\r\nversion 0 // experimental\r\n\r\nproject \"test\" root=\"packages/test\" {\r\n  target \"build\" builder=\"@angular-devkit/build-angular:browser\" {\r\n    options {\r\n      index \"packages/test/src/index.html\"\r\n      main \"packages/test/src/main.ts\"\r\n      // ...\r\n    }\r\n  }\r\n}\r\n```\r\n\r\nin JSON:\r\n\r\n```jsonc\r\n{\r\n  \"version\": 1,\r\n  \"projects\": {\r\n    \"test\": {\r\n      \"root\": \"test\",\r\n      \"targets\": {\r\n        \"build\": {\r\n          \"builder\": \"@angular-devkit/build-angular:browser\",\r\n          \"options\": {\r\n            \"index\": \"packages/test/src/index.html\",\r\n            \"main\": \"packages/test/src/main.ts\",\r\n            // ...\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n```\r\n\r\nOne of the big improvements that KDL gives us is the type/tag, which allows us to convey metadata as well as regular data. Angular expects all paths to be passed relative to the configuration file, so suppose we have two packages `\"actions\"` and `\"assets\"` we have to configure\r\n\r\n```kdl\r\nproject \"actions\" root=\"packages/actions\" {\r\n  target \"build\" builder=\"@internal/angular:build\" {\r\n    options {\r\n      entryPoint \"packages/actions/package.json\"\r\n      tsConfig \"tsconfig.compile.json\"\r\n    }\r\n  }\r\n}\r\n\r\nproject \"assets\" root=\"packages/assets\" {\r\n  target \"build\" builder=\"@internal/angular:build\" {\r\n    options {\r\n      entryPoint \"packages/assets/package.json\"\r\n      tsConfig \"tsconfig.compile.json\"\r\n    }\r\n  }\r\n}\r\n```\r\n\r\nBy introducing a `(project-relative)` tag we can align these configurations:\r\n\r\n```kdl\r\nproject \"actions\" root=\"packages/actions\" {\r\n  target \"build\" builder=\"@internal/angular:build\" {\r\n    options {\r\n      entryPoint (project-relative)\"package.json\"\r\n      tsConfig \"tsconfig.compile.json\"\r\n    }\r\n  }\r\n}\r\n\r\nproject \"assets\" root=\"packages/assets\" {\r\n  target \"build\" builder=\"@internal/angular:build\" {\r\n    options {\r\n      entryPoint (project-relative)\"package.json\"\r\n      tsConfig \"tsconfig.compile.json\"\r\n    }\r\n  }\r\n}\r\n```\r\n\r\nAnd that quickly lead to adding support for inheritance\r\n\r\n```kdl\r\n(abstract)project \"parent\" {\r\n  target \"build\" builder=\"@internal/angular:build\" {\r\n    options {\r\n      entryPoint (project-relative)\"package.json\"\r\n      tsConfig \"tsconfig.compile.json\"\r\n    }\r\n  }\r\n}\r\n\r\nproject \"actions\" extends=\"parent\" root=\"packages/actions\"\r\n\r\nproject \"assets\" extends=\"parent\" root=\"packages/assets\"\r\n\r\n// This project defines a different tsConfig\r\nproject \"avatars\" extends=\"parent\" root=\"packages/avatars\" {\r\n  target \"build\" {\r\n    options {\r\n      tsConfig \"packages/avatars/tsconfig.compile.json\"\r\n    }\r\n  }\r\n}\r\n```\r\n\r\nUsing KDL we are able to improve the configurations in ways that simply were not possible with JSON:\r\n\r\n- You can see at a glance that projects are configured identically, and can easily spot deviations\r\n- The configuration has become a lot shorter, reducing from 4,000 lines without any empty lines to only 800 lines, 200 of which are empty\r\n- The configuration is nested a lot less deeply, reducing the amount of configuration mistakes due to adding properties at the wrong level\r\n\r\nWe gain these improvements without losing any functionality, including the ability of the Angular CLI to modify the configuration programmatically via so-called \"schematics\".",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "poojakedar"
+          },
+          "body": "Hi Team,\r\n\r\nYour app looks impressive. Actually, we are also delivering an app with multi window feature. Any chance that we can integrate it with our existing app. We are finding it difficult to send data across the browser window, currently we use the localStorage but it does not work perfectly all the time.  But I see Neomj lib fulfills this purpose.\r\n\r\nKindly share your thoughts on how to move forward.",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "giscus"
+          },
+          "body": "# angular/could-not-find-module-angular-devkit-build-angular/\n\nTo fix Could not find module angular-devkit-build-angular error in Angular follow the below steps 1. Delete node_modules folder and run npm install 2. Install `angular-devkit-build-angular` package as a dev dependency.\n\nhttps://www.angularjswiki.com/angular/could-not-find-module-angular-devkit-build-angular/",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "mouradbengmah"
+          },
+          "body": "Hello,\r\n\r\nFirst of all, thanks for your work!\r\n\r\nI would like to know if your DpeGes library is working with npm and Angular 13?\r\n\r\nHave a nice day :)",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "ad9999"
+          },
+          "body": "https://clarity.design/documentation/datagrid/structure\r\n\r\nComponent status page below shows its available for UI, NG.\r\nhttps://clarity.design/documentation",
+          "answer": {
+            "id": "DC_kwDOHA2eHM4ANAhY"
+          }
+        },
+        {
+          "author": {
+            "login": "Rajan-Gupta1"
+          },
+          "body": "Got Angular Auth to work, but getting it all the way from login, logout and back to login is not clear in the documentation. \r\nCan a guide for angular similar to the one for react be created?\r\nhttps://ui.docs.amplify.aws/react/guides/auth-protected\r\n\r\nPlease help \r\nThanks",
+          "answer": null
+        },
+        {
+          "author": {
+            "login": "NateRadebaugh"
+          },
+          "body": "With this now being framework agnostic I thought I'd see an example for using with angular apps. Would this be trivial to set up, or do observables and rxjs make it more complex than the other supported frameworks?\r\n\r\nThanks!",
+          "answer": null
+        }
+      ]
+    }
+  }
+}
+
+{
+  "query": "angular",
+  "type": "REPOSITORY"
+}
+
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "name": "angular",
+          "url": "https://github.com/angular/angular",
+          "description": "The modern web developer’s platform"
+        },
+        {
+          "name": "angular.js",
+          "url": "https://github.com/angular/angular.js",
+          "description": "AngularJS - HTML enhanced for web apps!"
+        },
+        {
+          "name": "angular-cli",
+          "url": "https://github.com/angular/angular-cli",
+          "description": "CLI tool for Angular"
+        },
+        {
+          "name": "angular-starter",
+          "url": "https://github.com/PatrickJS/angular-starter",
+          "description": "Angular Starter"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/angulardart/angular",
+          "description": "Fast and productive web framework provided by Dart"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/formio/angular",
+          "description": "JSON powered forms for Angular"
+        },
+        {
+          "name": "AngularJS-Learning",
+          "url": "https://github.com/jmcunningham/AngularJS-Learning",
+          "description": "A bunch of links to blog posts, articles, videos, etc for learning AngularJS"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/OOP-Code-Bunny/angular",
+          "description": "所有angular学习过程中的代码"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/scalyr/angular",
+          "description": "Code to optimize AngularJS for complex pages"
+        },
+        {
+          "name": "Angular-GettingStarted",
+          "url": "https://github.com/DeborahK/Angular-GettingStarted",
+          "description": "Sample Angular application used in the \"Angular: Getting Started\" course: http://bit.ly/Angular-GettingStarted"
+        },
+        {
+          "name": "angular-ngrx-material-starter",
+          "url": "https://github.com/tomastrajan/angular-ngrx-material-starter",
+          "description": "Angular, NgRx, Angular CLI & Angular Material Starter Project"
+        },
+        {
+          "name": "angular-seed",
+          "url": "https://github.com/angular/angular-seed",
+          "description": "Seed project for angular apps. "
+        },
+        {
+          "name": "angular-styleguide",
+          "url": "https://github.com/johnpapa/angular-styleguide",
+          "description": "Angular Style Guide: A starting point for Angular development teams to provide consistency through good practices."
+        },
+        {
+          "name": "angularfire",
+          "url": "https://github.com/angular/angularfire",
+          "description": "The official Angular library for Firebase."
+        },
+        {
+          "name": "platform",
+          "url": "https://github.com/ngrx/platform",
+          "description": "Reactive libraries for Angular"
+        },
+        {
+          "name": "angularUtils",
+          "url": "https://github.com/michaelbromley/angularUtils",
+          "description": "A place where I will collect useful re-usable Angular components that I make"
+        },
+        {
+          "name": "angular-phonecat",
+          "url": "https://github.com/angular/angular-phonecat",
+          "description": "Tutorial on building an angular application."
+        },
+        {
+          "name": "ng-bootstrap",
+          "url": "https://github.com/ng-bootstrap/ng-bootstrap",
+          "description": "Angular powered Bootstrap"
+        },
+        {
+          "name": "angular",
+          "url": "https://github.com/ui-router/angular",
+          "description": "UI-Router for Angular: State-based routing for Angular (v2+)"
+        },
+        {
+          "name": "AngularJSAuthentication",
+          "url": "https://github.com/tjoudeh/AngularJSAuthentication",
+          "description": "Tutorial shows Authentication in AngularJS with ASP.NET Web API 2 and Owin Middle-ware using access tokens and refresh tokens approach"
+        }
+      ]
+    }
+  }
+}
+
+---------------------------------------------------------------------------
+Q7
+curl -X POST -H 'Authorization: Bearer <your token>' --date-binary @query.graphql https://api.github.com/graphql
+
+query.graphql - filename
+Contents of query.graphql:
+--------
+query{
+	user(name:"myrepo", owner:"fred") {
+		name
+		login
+		url}
+}
+
+
+
+
+
+
+
+
+
+
+
+
